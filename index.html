@@ -2,143 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kurt — Home</title>
-  <meta name="description" content="Kurt Riggin — Biostatistician, YouTuber and AI builder.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kurt Riggin</title>
+  <meta name="description" content="Kurt Riggin: biostatistician, YouTuber and AI builder.">
   <meta property="og:title" content="Kurt Riggin">
   <meta property="og:description" content="Biostatistics MS student at the University of Washington. Research, R packages, AI builds and videos.">
-  <meta name="theme-color" content="#050505">
-  <script>/* set theme before first paint: saved choice, else system setting */var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.dataset.theme=t;</script>
+  <meta name="theme-color" content="#fafbfb">
+  <script>/* apply a saved theme choice before first paint; otherwise CSS follows the system setting */var t;try{t=localStorage.getItem("theme")}catch(e){}if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='black'/><text x='50' y='70' font-size='62' font-family='monospace' font-weight='700' fill='white' text-anchor='middle'>K</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%231b2121'/><text x='50' y='73' font-size='70' font-family='Georgia,serif' font-style='italic' fill='%2300bfc4' text-anchor='middle'>K</text></svg>">
 </head>
 <body>
-  <div class="bg-glow"><span></span><span></span><span></span></div>
-  <div class="bg-grid"></div>
-  <div class="bg-grid bg-grid-lit"></div>
-  <div class="spotlight"></div>
-  <div class="progress"></div>
-
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">kurt<span class="dot">.</span>dev</a>
-      <button class="kbd-btn" id="cmdk-open" aria-label="Open command palette"><span>⌘K</span></button>
-      <button class="theme-btn" id="theme-toggle" type="button" aria-label="Toggle light or dark theme" title="Toggle theme">
-        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <nav class="tabs">
+  <header class="masthead">
+    <div class="wrap">
+      <a class="name" href="index.html">Kurt Riggin</a>
+      <nav class="nav" aria-label="Main">
         <a href="index.html">Home</a>
-        <a href="academic.html">Academic</a>
+        <a href="academic.html">Research</a>
         <a href="youtube.html">YouTube</a>
       </nav>
+      <button class="theme-btn" id="theme-toggle" type="button">Dark</button>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <canvas id="network" aria-hidden="true"></canvas>
-      <div>
-        <div class="hero-badge"><span class="pulse"></span> <span data-scramble>Data, science &amp; stories</span></div>
-        <h1>Hi, I'm <span class="gradient-text">Kurt</span></h1>
-        <p class="typing-line">I'm <span class="article">a</span> <span class="typed gradient-text"></span><span class="cursor"></span></p>
-        <div class="socials" data-socials></div>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="academic.html">View my research</a>
-          <a class="btn btn-ghost" href="youtube.html">Watch my videos</a>
-        </div>
-      </div>
-      <div class="hint">move your cursor · press <kbd>⌘K</kbd></div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee-track">
-      <span>Biostatistics</span><span>R</span><span>GLMMs</span><span>Bayesian inference</span><span>Ecology</span><span>Data visualization</span><span>PERMANOVA</span><span>YouTube</span><span>Claude Code</span><span>AI automation</span><span>Open source</span>
-      <span>Biostatistics</span><span>R</span><span>GLMMs</span><span>Bayesian inference</span><span>Ecology</span><span>Data visualization</span><span>PERMANOVA</span><span>YouTube</span><span>Claude Code</span><span>AI automation</span><span>Open source</span>
-    </div></div>
-
-    <section>
-      <div class="container">
-        <div class="feature reveal clt">
-          <div>
-            <p class="eyebrow">// Live simulation</p>
-            <h3>The central limit theorem, live.</h3>
-            <p>Each dot is the mean of 12 random draws. Watch thousands of them pile up into a bell curve, the idea most of statistics is built on.</p>
-            <div class="clt-stats"><div><b id="clt-n">0</b><span>samples</span></div><div><b id="clt-mu">0.00</b><span>mean</span></div><div><b id="clt-sd">0.00</b><span>std. dev.</span></div></div>
-            <button class="btn btn-ghost" id="clt-reset" style="margin-top:18px">Reset simulation</button>
+    <div class="wrap">
+      <section class="hero">
+        <div class="hero-text">
+          <p class="kicker">Biostatistics MS, University of Washington · Seattle</p>
+          <h1>I model ecological data in R, and build software with AI <em>on camera</em>.</h1>
+          <p class="prose">Two peer-reviewed papers on deep-sea fishes, an R package on CRAN for reconstructing historical forests, and a YouTube channel where I build real tools with Claude Code against the clock.</p>
+          <div class="actions">
+            <a class="btn btn-ink" href="academic.html">See my research</a>
+            <a class="arrow-link" href="youtube.html">Watch the builds</a>
           </div>
-          <canvas id="clt" aria-label="Animated histogram forming a normal distribution"></canvas>
+          <div class="social-line" data-socials></div>
         </div>
-      </div>
-    </section>
+        <figure>
+          <canvas class="plot" id="clt" role="img" aria-label="Histogram of standardized sample means filling in to match a normal curve"></canvas>
+          <figcaption><b>Figure 1.</b> The central limit theorem, running live. Each sample is the mean of 12 uniform draws, standardized. After <span class="num" id="clt-n">0</span> samples the mean is <span class="num" id="clt-mu">0.00</span> and the SD is <span class="num" id="clt-sd">0.00</span>. The dashed line is N(0,&nbsp;1). <button class="text-btn" id="clt-reset" type="button">Start over</button></figcaption>
+        </figure>
+      </section>
 
-    <section style="padding-top:0">
-      <div class="container">
-        <p class="eyebrow reveal">// What I do</p>
-        <h2 class="reveal" style="margin-bottom:28px">Three sides, one curiosity.</h2>
-        <div class="grid">
-          <a class="card reveal" href="academic.html"><div class="card-icon">01</div><h3>Biostatistics</h3><p>Statistical models and open-source R tools for ecological questions, from deep-sea diets to forest edges.</p><span class="card-link">Explore research →</span></a>
-          <a class="card reveal" href="youtube.html"><div class="card-icon">02</div><h3>YouTube</h3><p>I push AI tools as far as they go on camera: real builds against a real clock, no hand-typed code.</p><span class="card-link">Watch videos →</span></a>
-          <a class="card reveal" href="#work"><div class="card-icon">03</div><h3>AI builds</h3><p>Websites, tools and automations built with Claude Code, for me and for people who need one.</p><span class="card-link">Work with me →</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section style="padding-top:0">
-      <div class="container">
-        <p class="eyebrow reveal">// Latest on YouTube</p>
-        <h2 class="reveal" style="margin-bottom:28px">Fresh off the timeline.</h2>
-        <div class="grid" id="latest-videos"></div>
-        <a class="card-link reveal" href="youtube.html" style="margin-top:22px">All videos →</a>
-      </div>
-    </section>
-
-    <section style="padding-top:0">
-      <div class="container">
-        <p class="eyebrow reveal">// Things I've built</p>
-        <h2 class="reveal" style="margin-bottom:28px">Built with AI, used every day.</h2>
-        <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))">
-          <a class="card reveal" href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener"><div class="card-icon">01</div><h3>This website</h3><p>Built from scratch in a timed 30-minute speedrun with Claude Code, prompts only. The code is free to copy.</p><div class="tags"><span class="tag">HTML/CSS/JS</span><span class="tag pink">Free template</span></div><span class="card-link">Copy it →</span></a>
-          <article class="card reveal"><div class="card-icon">02</div><h3>Kratos</h3><p>My personal AI operating system: calendar, tasks, nutrition, goals and a planning dashboard, run through Claude Code and GitHub Actions.</p><div class="tags"><span class="tag">Claude Code</span><span class="tag">Next.js</span><span class="tag alt">Private</span></div></article>
-          <article class="card reveal"><div class="card-icon">03</div><h3>AutoEdit</h3><p>An AI video editor: it cuts raw footage, cleans it up, packages it and turns it into Shorts.</p><div class="tags"><span class="tag">AI video</span><span class="tag">CLI</span><span class="tag alt">Private</span></div></article>
-          <article class="card reveal"><div class="card-icon">04</div><h3>Recipe tracker</h3><p>Recipes, cost per serving and meal plans, with grocery prices refreshed automatically every day.</p><div class="tags"><span class="tag">Web app</span><span class="tag">Automation</span><span class="tag alt">Private</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" style="padding-top:0">
-      <div class="container">
-        <div class="feature reveal">
-          <div>
-            <p class="eyebrow">// Work with me</p>
-            <h3>Need something built?</h3>
-            <p>I build websites, tools and automations with AI for small businesses, researchers and creators. If there's something you do by hand every week, tell me about it.</p>
-            <div class="hero-cta" style="justify-content:flex-start;margin-top:22px">
-              <a class="btn btn-primary" data-link="email" href="#">Email me</a>
-              <a class="btn btn-ghost" data-link="youtube" href="#" target="_blank" rel="noopener">Watch me build</a>
-            </div>
+      <section class="block">
+        <h2 class="head">What I do</h2>
+        <div class="body">
+          <div class="trio">
+            <div><h3>Research</h3><p>Statistical models and open-source R tools for ecological questions, from deep-sea diets to forest edges.</p><a class="arrow-link" href="academic.html">Papers and packages</a></div>
+            <div><h3>YouTube</h3><p>I push AI tools as far as they go on camera: real builds against a real clock, no hand-typed code.</p><a class="arrow-link" href="youtube.html">Videos</a></div>
+            <div><h3>Client work</h3><p>Websites, tools and automations built with Claude Code, for small businesses, researchers and creators.</p><a class="arrow-link" href="#work">Work with me</a></div>
           </div>
-          <pre class="code"><span class="c"># how it works</span>
-<span class="k">1.</span> you tell me the problem
-<span class="k">2.</span> I build it with Claude Code
-<span class="k">3.</span> you get a working tool,
-   not a slide deck</pre>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="block">
+        <h2 class="head">Latest videos</h2>
+        <div class="body">
+          <div class="videos" id="latest-videos"></div>
+          <a class="arrow-link" href="youtube.html" style="align-self:flex-start">All videos</a>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="head">Builds</h2>
+        <div class="body">
+          <p class="prose muted">Things I've built with AI and use every day.</p>
+          <div class="table-wrap">
+            <table class="stack">
+              <thead><tr><th>Build</th><th>Stack</th><th>Access</th></tr></thead>
+              <tbody>
+                <tr><td><span class="t">This website</span><span class="d">Started as a timed 30-minute speedrun with Claude Code, prompts only. That first version is free to copy.</span></td><td class="small" data-label="Stack">HTML, CSS, JavaScript</td><td class="small"><a class="link out" href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener">Template</a></td></tr>
+                <tr><td><span class="t">Kratos</span><span class="d">My personal AI operating system: calendar, tasks, nutrition, goals and a planning dashboard, run through Claude Code and GitHub Actions.</span></td><td class="small" data-label="Stack">Claude Code, Next.js</td><td><span class="status private">Private</span></td></tr>
+                <tr><td><span class="t">AutoEdit</span><span class="d">An AI video editor: it cuts raw footage, cleans it up, packages it and turns it into Shorts.</span></td><td class="small" data-label="Stack">AI video, CLI</td><td><span class="status private">Private</span></td></tr>
+                <tr><td><span class="t">Recipe tracker</span><span class="d">Recipes, cost per serving and meal plans, with grocery prices refreshed automatically every day.</span></td><td class="small" data-label="Stack">Web app, automation</td><td><span class="status private">Private</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="work">
+        <h2 class="head">Work with me</h2>
+        <div class="body">
+          <h3 style="font-size:clamp(1.5rem,3vw,2rem)">Need something built?</h3>
+          <p class="prose">I build websites, tools and automations with AI for small businesses, researchers and creators. If there's something you do by hand every week, tell me about it.</p>
+          <ol class="steps">
+            <li><b>You describe the problem.</b> A chore you repeat every week is a good place to start.</li>
+            <li><b>I build it with Claude Code.</b> A website, an internal tool or an automation.</li>
+            <li><b>You get a working tool.</b> Not a slide deck about one.</li>
+          </ol>
+          <div class="contact">
+            <a class="btn btn-ink" data-link="email" href="#">Email me</a>
+            <span class="email-text" data-email></span>
+            <button class="btn btn-line" id="copy-email" type="button">Copy address</button>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <span>© <span data-year></span> Kurt Riggin. Built in a 30-minute speedrun with Claude Code · <a href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener" style="text-decoration:underline">copy it</a></span>
-      <div class="socials" data-socials></div>
+    <div class="wrap">
+      <span>© <span data-year></span> Kurt Riggin · <span class="social-line" data-socials></span></span>
+      <span>Built with Claude Code. The first version was a 30-minute speedrun on camera, and <a href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener">you can copy it</a>.</span>
     </div>
   </footer>
 
   <script src="js/config.js"></script>
   <script src="js/youtube-data.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/fx.js"></script>
+  <script src="js/clt.js"></script>
 </body>
 </html>
