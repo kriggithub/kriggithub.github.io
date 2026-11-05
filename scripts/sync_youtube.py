@@ -131,9 +131,10 @@ def main():
         if txt.startswith(PREFIX):
             try:
                 old = json.loads(txt[len(PREFIX):].rstrip().rstrip(";"))
-                old.pop("synced_at", None)
             except ValueError:
                 old = None
+            if isinstance(old, dict):
+                old.pop("synced_at", None)
     if old == data:
         print(f"no change ({len(videos)} videos)")
         return
