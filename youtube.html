@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurt — YouTube</title>
+  <meta name="description" content="Kurt — biostatistician and YouTuber.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+  <div class="bg-glow"><span></span><span></span><span></span></div>
+  <div class="bg-grid"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">kurt<span class="dot">.</span>dev</a>
+      <nav class="tabs">
+        <a href="index.html">Home</a>
+        <a href="academic.html">Academic</a>
+        <a href="youtube.html">YouTube</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-head reveal">
+        <p class="eyebrow">// YouTube</p>
+        <h1>Stats, science &amp; <span class="gradient-text">everything between</span>.</h1>
+        <p class="lead">Videos that make statistics approachable, plus a look behind the scenes of research life.</p>
+      </div>
+
+      <div class="channel reveal">
+        <div class="channel-avatar">K</div>
+        <div class="channel-info">
+          <h3>Kurt Riggin</h3>
+          <p>@KurtRiggin · New videos regularly</p>
+        </div>
+        <a class="btn btn-yt" data-link="youtube" href="#" target="_blank" rel="noopener">Subscribe</a>
+      </div>
+
+      <div class="featured-video reveal">
+        <p class="eyebrow" style="margin-bottom:10px">// Featured</p>
+        <div class="video-frame" id="featured"></div>
+        <h3 id="featured-title" style="margin-top:14px;font-size:1.3rem"></h3>
+      </div>
+
+      <section style="padding-top:48px">
+        <h2 class="reveal">Latest videos</h2>
+        <div class="filters" id="filters"></div>
+        <div class="grid" id="video-grid"></div>
+        <p class="placeholder-note" style="margin-top:20px">Add your video IDs in js/config.js to replace these placeholders.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span data-year></span> Kurt Riggin. Built with plain HTML, CSS &amp; JS.</span>
+      <div class="socials" data-socials></div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
