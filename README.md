@@ -15,4 +15,7 @@ python3 -m http.server 8000
 Then open http://localhost:8000.
 
 ## Deploy (GitHub Pages)
-Repo → Settings → Pages → Source: *Deploy from a branch* → pick the branch and `/ (root)`.
+Live at **https://kriggithub.github.io**: every push to `main` deploys (Settings → Pages → *Deploy from a branch* → `main` / root).
+
+This site started as the 30-minute speedrun from my YouTube video and has changed since. The version frozen at the end of the video, which you can copy, is at
+[kriggithub/YT_Portfolio_Website_Template](https://github.com/kriggithub/YT_Portfolio_Website_Template).
