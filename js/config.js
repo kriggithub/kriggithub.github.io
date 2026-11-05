@@ -5,7 +5,7 @@
 const SITE = {
   name: "Kurt",
   // Words cycled by the typing effect on the home page
-  roles: ["biostatistician", "YouTuber"],
+  roles: ["Biostatistician.", "YouTuber."],
 
   links: {
     github:   "https://github.com/kriggithub",
