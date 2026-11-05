@@ -261,3 +261,76 @@
   console.log("%cHi, I'm Kurt.", "font: 700 28px Inter, sans-serif; color: #fff; background: #000; padding: 8px 14px; border-radius: 8px;");
   console.log("%cBiostatistician · YouTuber · " + SITE.links.github + "\nTry ⌘K, or type 'stats' anywhere.", "color: #888; font-family: monospace;");
 })();
+
+/* ---------- CLT simulation ---------- */
+(() => {
+  const cv = document.getElementById("clt");
+  if (!cv) return;
+  const ctx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2);
+  const BINS = 41, K = 12;
+  let bins, n, sum, sum2, falling, W, H;
+  const reset = () => { bins = new Array(BINS).fill(0); n = 0; sum = 0; sum2 = 0; falling = []; };
+  const size = () => { W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  reset(); size(); addEventListener("resize", size);
+  document.getElementById("clt-reset").addEventListener("click", reset);
+  const $n = document.getElementById("clt-n"), $mu = document.getElementById("clt-mu"), $sd = document.getElementById("clt-sd");
+  let visible = false;
+  new IntersectionObserver((e) => (visible = e[0].isIntersecting)).observe(cv);
+  const step = () => {
+    requestAnimationFrame(step);
+    if (!visible) return;
+    for (let s = 0; s < 3; s++) {
+      let m = 0; for (let i = 0; i < K; i++) m += Math.random(); m /= K;   // mean of K uniforms
+      const z = (m - 0.5) / Math.sqrt(1 / 12 / K);                          // standardize
+      const b = Math.round((z + 4) / 8 * (BINS - 1));
+      if (b >= 0 && b < BINS) falling.push({ b, y: -6, v: 2 + Math.random() * 2 });
+      n++; sum += z; sum2 += z * z;
+    }
+    const pad = 16, bw = (W - pad * 2) / BINS, max = Math.max(30, ...bins);
+    const sy = (H - pad * 2) / (max * 1.15);
+    ctx.clearRect(0, 0, W, H);
+    // axis
+    ctx.strokeStyle = "rgba(255,255,255,.12)"; ctx.beginPath(); ctx.moveTo(pad, H - pad); ctx.lineTo(W - pad, H - pad); ctx.stroke();
+    // bars
+    bins.forEach((c, i) => {
+      const h = c * sy;
+      ctx.fillStyle = `rgba(255,255,255,${0.25 + 0.6 * (c / max)})`;
+      ctx.fillRect(pad + i * bw + 1, H - pad - h, bw - 2, h);
+    });
+    // falling dots
+    falling = falling.filter((d) => {
+      d.y += d.v; d.v += 0.35;
+      const top = H - pad - bins[d.b] * sy;
+      if (d.y >= top) { bins[d.b]++; return false; }
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(pad + (d.b + .5) * bw, d.y, 2, 0, 7); ctx.fill();
+      return true;
+    });
+    // theoretical normal curve
+    const total = bins.reduce((a, b) => a + b, 0);
+    if (total > 20) {
+      ctx.strokeStyle = "rgba(255,255,255,.9)"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath();
+      for (let x = 0; x <= BINS - 1; x += 0.25) {
+        const z = x / (BINS - 1) * 8 - 4, pdf = Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
+        const y = H - pad - pdf * total * (8 / (BINS - 1)) * sy;
+        x ? ctx.lineTo(pad + (x + .5) * bw, y) : ctx.moveTo(pad + (x + .5) * bw, y);
+      }
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+    $n.textContent = n.toLocaleString();
+    const mu = sum / n; $mu.textContent = mu.toFixed(2);
+    $sd.textContent = Math.sqrt(sum2 / n - mu * mu).toFixed(2);
+    if (n > 6000) reset();
+  };
+  step();
+})();
+
+/* ---------- Count-up numbers ---------- */
+(() => {
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return; io.unobserve(e.target);
+    const el = e.target, end = +el.dataset.count, t0 = performance.now();
+    const tick = (t) => { const p = Math.min((t - t0) / 1200, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }));
+  document.querySelectorAll("[data-count]").forEach((el) => io.observe(el));
+})();
