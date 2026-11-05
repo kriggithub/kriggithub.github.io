@@ -8,7 +8,7 @@ view counts, durations and subscriber count from the YouTube Data API.
 Only rewrites the file when the data actually changed, so the scheduled
 workflow doesn't commit when nothing happened.
 """
-import json, os, re, sys, urllib.parse, urllib.request
+import json, os, re, sys, urllib.error, urllib.parse, urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
@@ -93,8 +93,13 @@ def from_api():
     }
     uploads, ids, token = ch["contentDetails"]["relatedPlaylists"]["uploads"], [], None
     while len(ids) < 200:
-        page = api("playlistItems", part="contentDetails", playlistId=uploads, maxResults=50,
-                   **({"pageToken": token} if token else {}))
+        try:
+            page = api("playlistItems", part="contentDetails", playlistId=uploads, maxResults=50,
+                       **({"pageToken": token} if token else {}))
+        except urllib.error.HTTPError as e:
+            if e.code == 404 and not ids:  # the uploads playlist doesn't exist until the first public video
+                break
+            raise
         ids += [i["contentDetails"]["videoId"] for i in page.get("items", [])]
         token = page.get("nextPageToken")
         if not token:
