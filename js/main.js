@@ -50,44 +50,72 @@ if (typedEl) {
   tick();
 }
 
-/* ---------- YouTube page ---------- */
+/* ---------- YouTube data ----------
+   Synced videos (js/youtube-data.js, written by the "YouTube sync" GitHub
+   Action) win; VIDEOS in config.js is the fallback and can pin a featured
+   video. */
+const SYNC = window.YT_SYNC || null;
+const fmtDate = (iso) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const fmtNum = (n) => new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(n);
+const synced = (SYNC && SYNC.videos ? SYNC.videos : []).map((v) => ({
+  id: v.id,
+  title: v.title,
+  category: v.short ? "Shorts" : "Videos",
+  duration: v.duration,
+  date: [fmtDate(v.published), v.views != null ? `${fmtNum(v.views)} views` : ""].filter(Boolean).join(" · "),
+  url: v.short ? `https://www.youtube.com/shorts/${v.id}` : `https://www.youtube.com/watch?v=${v.id}`,
+}));
+const longForm = synced.filter((v) => v.category === "Videos");
+const featured = VIDEOS.featured.id ? VIDEOS.featured : longForm[0] || VIDEOS.featured;
+const videoList = synced.length ? synced.filter((v) => v.id !== featured.id) : VIDEOS.list;
+
 const thumb = (v, label) =>
   v.id
     ? `<img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy">`
     : `<div class="thumb-ph"><div class="play">${ICONS.play}</div><span class="ph-label">${label}</span></div>`;
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const videoCard = (v) => {
+  const href = v.url || (v.id ? `https://www.youtube.com/watch?v=${v.id}` : SITE.links.youtube);
+  return `<a class="video-card reveal visible" href="${href}" target="_blank" rel="noopener">
+    <div class="video-thumb">${thumb(v, "// thumbnail")}${v.duration ? `<span class="duration">${v.duration}</span>` : ""}</div>
+    <div class="video-body">
+      <span class="tag">${esc(v.category)}</span>
+      <h3>${esc(v.title)}</h3>
+      <p>${esc(v.date || "")}</p>
+    </div>
+  </a>`;
+};
 
-const featuredEl = document.getElementById("featured");
-if (featuredEl) {
-  const f = VIDEOS.featured;
-  featuredEl.innerHTML = f.id
-    ? `<iframe src="https://www.youtube-nocookie.com/embed/${f.id}" title="${f.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-    : thumb(f, f.label || "// coming soon");
-  const t = document.getElementById("featured-title");
-  if (t) t.textContent = f.title;
+/* Channel card stats */
+const chStats = document.getElementById("channel-stats");
+if (chStats && SYNC && SYNC.channel && (synced.length || SYNC.channel.subscribers)) {
+  const c = SYNC.channel, bits = [chStats.dataset.handle];
+  if (c.subscribers != null) bits.push(`${fmtNum(c.subscribers)} subscribers`);
+  bits.push(`${c.video_count != null ? c.video_count : synced.length} videos`);
+  chStats.textContent = bits.join(" · ");
 }
 
+/* Featured video */
+const featuredEl = document.getElementById("featured");
+if (featuredEl) {
+  featuredEl.innerHTML = featured.id
+    ? `<iframe src="https://www.youtube-nocookie.com/embed/${featured.id}" title="${esc(featured.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    : thumb(featured, featured.label || "// coming soon");
+  const t = document.getElementById("featured-title");
+  if (t) t.textContent = featured.title;
+}
+
+/* Video grid + filters */
 const gridEl = document.getElementById("video-grid");
 const filtersEl = document.getElementById("filters");
-if (gridEl && !VIDEOS.list.length) {
+if (gridEl && !videoList.length) {
   gridEl.closest("section").hidden = true;
 } else if (gridEl) {
   const render = (cat) => {
-    gridEl.innerHTML = VIDEOS.list
-      .filter((v) => cat === "All" || v.category === cat)
-      .map((v) => {
-        const href = v.id ? `https://www.youtube.com/watch?v=${v.id}` : SITE.links.youtube;
-        return `<a class="video-card reveal visible" href="${href}" target="_blank" rel="noopener">
-          <div class="video-thumb">${thumb(v, "// thumbnail")}${v.duration ? `<span class="duration">${v.duration}</span>` : ""}</div>
-          <div class="video-body">
-            <span class="tag">${v.category}</span>
-            <h3>${v.title}</h3>
-            <p>${v.date || ""}</p>
-          </div>
-        </a>`;
-      })
-      .join("");
+    gridEl.innerHTML = videoList.filter((v) => cat === "All" || v.category === cat).map(videoCard).join("");
   };
-  const cats = ["All", ...new Set(VIDEOS.list.map((v) => v.category))];
+  const cats = ["All", ...new Set(videoList.map((v) => v.category))];
+  filtersEl.style.display = cats.length < 3 ? "none" : "";
   filtersEl.innerHTML = cats.map((c, n) => `<button class="filter${n ? "" : " active"}" data-cat="${c}">${c}</button>`).join("");
   filtersEl.addEventListener("click", (e) => {
     const b = e.target.closest(".filter");
@@ -96,6 +124,14 @@ if (gridEl && !VIDEOS.list.length) {
     render(b.dataset.cat);
   });
   render("All");
+}
+
+/* Home page: latest uploads */
+const latestEl = document.getElementById("latest-videos");
+if (latestEl) {
+  const latest = [...longForm.slice(0, 2), ...synced.filter((v) => v.category === "Shorts").slice(0, 1)].slice(0, 3);
+  if (latest.length) latestEl.innerHTML = latest.map(videoCard).join("");
+  else latestEl.closest("section").hidden = true;
 }
 
 /* ---------- Reveal on scroll ---------- */

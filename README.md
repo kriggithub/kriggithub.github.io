@@ -4,7 +4,7 @@ Static site (plain HTML/CSS/JS, no build step) with three tabs: **Home**, **Acad
 
 ## Edit content
 - **Links, typing words, videos:** `js/config.js`
-  - Add a YouTube video by pasting its ID (the part after `watch?v=`) into `id`. Thumbnails and links fill in automatically; empty IDs show placeholders.
+  - YouTube videos **sync automatically**: the `YouTube sync` GitHub Action (every 6 hours, or Actions → YouTube sync → Run workflow) writes `js/youtube-data.js` from the channel. Optional repo secret `YOUTUBE_API_KEY` adds views, durations, subscriber count and full history. To pin a featured video, set `VIDEOS.featured.id`.
 - **Research / publications:** `academic.html`
 - **Styling / colors:** `css/style.css` (theme variables at the top)
 

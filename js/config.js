@@ -21,11 +21,13 @@ const SITE = {
    - Leave `id` empty to show a styled placeholder.
    - `category` drives the filter buttons on the YouTube page.  */
 const VIDEOS = {
-  // Big video at the top of the YouTube page. `label` shows on the
-  // placeholder until `id` is filled in.
+  // Big video at the top of the YouTube page. Leave `id` empty to feature
+  // the newest synced long-form video; `label` shows when there's none yet.
   featured: { id: "", title: "How I Claude Coded My Over-the-Top Portfolio Website in 30 Minutes", label: "// premieres soon" },
 
-  // Newest first. The "Latest videos" section stays hidden while this is empty.
+  // Videos sync automatically from the channel (js/youtube-data.js, written
+  // by the "YouTube sync" GitHub Action). This list is only a fallback for
+  // when that file has no videos. To pin a featured video, set its `id` above.
   // { id: "dQw4w9WgXcQ", title: "…", category: "AI builds", duration: "12:34", date: "Nov 2026" },
   list: [],
 };
