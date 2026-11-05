@@ -9,6 +9,15 @@
   const root = document.documentElement;
   const mouse = { x: -999, y: -999 };
 
+  /* Canvas colours follow the theme: INK is the foreground RGB triplet, PAPER the background. */
+  let INK = "255,255,255", PAPER = "5,5,5";
+  const readTheme = () => {
+    const cs = getComputedStyle(root);
+    INK = cs.getPropertyValue("--ink").trim() || INK;
+    PAPER = cs.getPropertyValue("--paper").trim() || PAPER;
+  };
+  readTheme(); addEventListener("themechange", readTheme);
+
   /* ---------- Spotlight + lit grid ---------- */
   addEventListener("pointermove", (e) => {
     mouse.x = e.clientX; mouse.y = e.clientY;
@@ -50,9 +59,9 @@
         const a = pts[i - 1], b = pts[i];
         const life = 1 - (now - b.t) / 450;
         const k = i / pts.length;
-        ctx.strokeStyle = `rgba(255,255,255,${0.55 * life * k})`;
+        ctx.strokeStyle = `rgba(${INK},${0.55 * life * k})`;
         ctx.lineWidth = 1 + 5 * k * life;
-        ctx.shadowColor = "rgba(255,255,255,.8)"; ctx.shadowBlur = 12 * life;
+        ctx.shadowColor = `rgba(${INK},.8)`; ctx.shadowBlur = 12 * life;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       }
       rx += (mouse.x - rx) * 0.18; ry += (mouse.y - ry) * 0.18;
@@ -91,11 +100,11 @@
         const a = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-          if (d < 120) { ctx.strokeStyle = `rgba(255,255,255,${(1 - d / 120) * 0.18})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+          if (d < 120) { ctx.strokeStyle = `rgba(${INK},${(1 - d / 120) * 0.18})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
         }
         const dm = Math.hypot(a.x - mx, a.y - my);
-        if (dm < 200) { ctx.strokeStyle = `rgba(255,255,255,${(1 - dm / 200) * 0.45})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
-        ctx.fillStyle = "rgba(255,255,255,.7)"; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
+        if (dm < 200) { ctx.strokeStyle = `rgba(${INK},${(1 - dm / 200) * 0.45})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
+        ctx.fillStyle = `rgba(${INK},.7)`; ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
       }
       requestAnimationFrame(draw);
     };
@@ -197,6 +206,7 @@
     { label: "Copy this website (free template)", hint: "link", run: open("https://github.com/kriggithub/YT_Portfolio_Website_Template") },
     { label: "Send an email", hint: "mail", run: () => (location.href = SITE.links.email) },
     { label: "Copy email address", hint: "copy", run: () => navigator.clipboard.writeText(email).then(() => toast("Email copied ✓")) },
+    { label: "Toggle light / dark theme", hint: "theme", run: () => Theme.toggle() },
     { label: "Make it rain (statistics)", hint: "fun", run: () => rain() },
   ];
   const bd = document.createElement("div");
@@ -246,10 +256,10 @@
     const start = performance.now();
     const step = () => {
       const t = performance.now() - start;
-      ctx.fillStyle = "rgba(5,5,5,.12)"; ctx.fillRect(0, 0, cv.width, cv.height);
+      ctx.fillStyle = `rgba(${PAPER},.12)`; ctx.fillRect(0, 0, cv.width, cv.height);
       ctx.font = `${fs}px JetBrains Mono, monospace`;
       drops.forEach((y, i) => {
-        ctx.fillStyle = Math.random() > .95 ? "#fff" : "rgba(255,255,255,.55)";
+        ctx.fillStyle = Math.random() > .95 ? `rgb(${INK})` : `rgba(${INK},.55)`;
         ctx.fillText(chars[(Math.random() * chars.length) | 0], i * fs, y * fs);
         drops[i] = y * fs > cv.height && Math.random() > .97 ? 0 : y + 1;
       });
@@ -269,6 +279,9 @@
   const cv = document.getElementById("clt");
   if (!cv) return;
   const ctx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2);
+  let INK = "255,255,255";
+  const readInk = () => { INK = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || INK; };
+  readInk(); addEventListener("themechange", readInk);
   const BINS = 41, K = 12;
   let bins, n, sum, sum2, falling, W, H;
   const reset = () => { bins = new Array(BINS).fill(0); n = 0; sum = 0; sum2 = 0; falling = []; };
@@ -292,11 +305,11 @@
     const sy = (H - pad * 2) / (max * 1.15);
     ctx.clearRect(0, 0, W, H);
     // axis
-    ctx.strokeStyle = "rgba(255,255,255,.12)"; ctx.beginPath(); ctx.moveTo(pad, H - pad); ctx.lineTo(W - pad, H - pad); ctx.stroke();
+    ctx.strokeStyle = `rgba(${INK},.12)`; ctx.beginPath(); ctx.moveTo(pad, H - pad); ctx.lineTo(W - pad, H - pad); ctx.stroke();
     // bars
     bins.forEach((c, i) => {
       const h = c * sy;
-      ctx.fillStyle = `rgba(255,255,255,${0.25 + 0.6 * (c / max)})`;
+      ctx.fillStyle = `rgba(${INK},${0.25 + 0.6 * (c / max)})`;
       ctx.fillRect(pad + i * bw + 1, H - pad - h, bw - 2, h);
     });
     // falling dots
@@ -304,13 +317,13 @@
       d.y += d.v; d.v += 0.35;
       const top = H - pad - bins[d.b] * sy;
       if (d.y >= top) { bins[d.b]++; return false; }
-      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(pad + (d.b + .5) * bw, d.y, 2, 0, 7); ctx.fill();
+      ctx.fillStyle = `rgb(${INK})`; ctx.beginPath(); ctx.arc(pad + (d.b + .5) * bw, d.y, 2, 0, 7); ctx.fill();
       return true;
     });
     // theoretical normal curve
     const total = bins.reduce((a, b) => a + b, 0);
     if (total > 20) {
-      ctx.strokeStyle = "rgba(255,255,255,.9)"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath();
+      ctx.strokeStyle = `rgba(${INK},.9)`; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath();
       for (let x = 0; x <= BINS - 1; x += 0.25) {
         const z = x / (BINS - 1) * 8 - 4, pdf = Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
         const y = H - pad - pdf * total * (8 / (BINS - 1)) * sy;

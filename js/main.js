@@ -8,6 +8,35 @@ const ICONS = {
 };
 const LABELS = { github: "GitHub", linkedin: "LinkedIn", youtube: "YouTube", email: "Email" };
 
+/* ---------- Light / dark theme ----------
+   The inline script in each page's <head> sets data-theme before first paint
+   (saved choice, else the system setting). This wires up the toggle. */
+const Theme = (() => {
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const sys = matchMedia("(prefers-color-scheme: light)");
+  const saved = () => { try { return localStorage.getItem("theme"); } catch (e) { return null; } };
+  const apply = (t, animate) => {
+    if (animate) { root.classList.add("theme-anim"); setTimeout(() => root.classList.remove("theme-anim"), 400); }
+    root.dataset.theme = t;
+    if (meta) meta.content = t === "light" ? "#fafafa" : "#050505";
+    const btn = document.getElementById("theme-toggle");
+    if (btn) btn.setAttribute("aria-label", t === "light" ? "Switch to dark theme" : "Switch to light theme");
+    dispatchEvent(new CustomEvent("themechange", { detail: t }));
+  };
+  const get = () => (root.dataset.theme === "light" ? "light" : "dark");
+  const toggle = () => {
+    const t = get() === "light" ? "dark" : "light";
+    try { localStorage.setItem("theme", t); } catch (e) {}
+    apply(t, true);
+  };
+  // Follow the system setting until the visitor picks one themselves.
+  sys.addEventListener("change", (e) => { if (!saved()) apply(e.matches ? "light" : "dark", true); });
+  apply(get(), false);
+  document.getElementById("theme-toggle")?.addEventListener("click", toggle);
+  return { get, toggle };
+})();
+
 /* ---------- Social icons (any element with data-socials) ---------- */
 document.querySelectorAll("[data-socials]").forEach((el) => {
   el.innerHTML = Object.entries(SITE.links)

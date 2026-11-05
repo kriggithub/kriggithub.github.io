@@ -6,7 +6,7 @@ Static site (plain HTML/CSS/JS, no build step) with three tabs: **Home**, **Acad
 - **Links, typing words, videos:** `js/config.js`
   - YouTube videos **sync automatically**: the `YouTube sync` GitHub Action (every 6 hours, or Actions → YouTube sync → Run workflow) writes `js/youtube-data.js` from the channel. Optional repo secret `YOUTUBE_API_KEY` adds views, durations, subscriber count and full history. To pin a featured video, set `VIDEOS.featured.id`.
 - **Research / publications:** `academic.html`
-- **Styling / colors:** `css/style.css` (theme variables at the top)
+- **Styling / colors:** `css/style.css` (dark theme variables at the top, light overrides under `:root[data-theme="light"]`). The sun/moon button in the nav switches themes; first visit follows the visitor's system setting, and their choice is remembered.
 
 ## Preview locally
 ```bash
