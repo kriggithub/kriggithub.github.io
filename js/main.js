@@ -61,14 +61,16 @@ if (featuredEl) {
   const f = VIDEOS.featured;
   featuredEl.innerHTML = f.id
     ? `<iframe src="https://www.youtube-nocookie.com/embed/${f.id}" title="${f.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-    : thumb(f, "// featured video placeholder");
+    : thumb(f, f.label || "// coming soon");
   const t = document.getElementById("featured-title");
   if (t) t.textContent = f.title;
 }
 
 const gridEl = document.getElementById("video-grid");
 const filtersEl = document.getElementById("filters");
-if (gridEl) {
+if (gridEl && !VIDEOS.list.length) {
+  gridEl.closest("section").hidden = true;
+} else if (gridEl) {
   const render = (cat) => {
     gridEl.innerHTML = VIDEOS.list
       .filter((v) => cat === "All" || v.category === cat)

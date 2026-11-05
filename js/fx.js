@@ -193,6 +193,8 @@
     { label: "GitHub", hint: "link", run: open(SITE.links.github) },
     { label: "LinkedIn", hint: "link", run: open(SITE.links.linkedin) },
     { label: "YouTube channel", hint: "link", run: open(SITE.links.youtube) },
+    { label: "Work with me", hint: "section", run: go("index.html#work") },
+    { label: "Copy this website (free template)", hint: "link", run: open("https://github.com/kriggithub/YT_Portfolio_Website_Template") },
     { label: "Send an email", hint: "mail", run: () => (location.href = SITE.links.email) },
     { label: "Copy email address", hint: "copy", run: () => navigator.clipboard.writeText(email).then(() => toast("Email copied ✓")) },
     { label: "Make it rain (statistics)", hint: "fun", run: () => rain() },
@@ -259,7 +261,7 @@
 
   /* ---------- Hello, devs ---------- */
   console.log("%cHi, I'm Kurt.", "font: 700 28px Inter, sans-serif; color: #fff; background: #000; padding: 8px 14px; border-radius: 8px;");
-  console.log("%cBiostatistician · YouTuber · " + SITE.links.github + "\nTry ⌘K, or type 'stats' anywhere.", "color: #888; font-family: monospace;");
+  console.log("%cBiostatistician · YouTuber · AI builder · " + SITE.links.github + "\nTry ⌘K, or type 'stats' anywhere.", "color: #888; font-family: monospace;");
 })();
 
 /* ---------- CLT simulation ---------- */

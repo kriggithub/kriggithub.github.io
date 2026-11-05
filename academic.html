@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kurt — Academic</title>
-  <meta name="description" content="Kurt Riggin — Biostatistician and YouTuber.">
+  <meta name="description" content="Kurt Riggin — Biostatistician, YouTuber and AI builder.">
   <meta property="og:title" content="Kurt Riggin">
-  <meta property="og:description" content="Biostatistician and YouTuber. Research, R packages and videos.">
+  <meta property="og:description" content="Biostatistics MS student at the University of Washington. Research, R packages, AI builds and videos.">
   <meta name="theme-color" content="#050505">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,11 +38,11 @@
       <div class="page-head reveal">
         <p class="eyebrow">// Academic</p>
         <h1>Statistics for the <span class="gradient-text">natural world</span>.</h1>
-        <p class="lead">I build statistical models and open-source R tools for ecology — from reconstructing historical forests to untangling what deep-sea fish eat. Here's a selection of my research and software.</p>
+        <p class="lead">I'm a Biostatistics MS student at the University of Washington. I build statistical models and open-source R tools for ecology, from reconstructing historical forests to untangling what deep-sea fish eat. Here's a selection of my research and software.</p>
         <div class="stats">
           <div class="stat"><b class="gradient-text" data-count="2">0</b><span>R packages</span></div>
-          <div class="stat"><b class="gradient-text" data-count="3">0</b><span>Research projects</span></div>
-          <div class="stat"><b class="gradient-text" data-count="3">0</b><span>Ecosystems studied</span></div>
+          <div class="stat"><b class="gradient-text" data-count="2">0</b><span>Peer-reviewed papers</span></div>
+          <div class="stat"><b class="gradient-text" data-count="6">0</b><span>Research projects</span></div>
           <div class="stat"><b class="gradient-text">R</b><span>Primary language</span></div>
         </div>
       </div>
@@ -54,13 +54,14 @@
 
         <div class="feature reveal">
           <div>
-            <div class="tags" style="margin-bottom:12px"><span class="tag">R package</span><span class="tag alt">Forest ecology</span></div>
+            <div class="tags" style="margin-bottom:12px"><span class="tag">R package</span><span class="tag pink">On CRAN</span><span class="tag alt">Forest ecology</span></div>
             <h3>standrecon</h3>
-            <p>Reconstruct historical forest stand conditions from present-day field data. Developed from the research code in <em>Forest_Stand_Reconstruction</em>.</p>
+            <p>Reconstruct historical forest basal area and stem density from present-day inventory data, using species growth rates and decay-class decomposition. Published on CRAN (2026), tested with testthat. Developed from the research code in <a href="https://github.com/kriggithub/Forest_Stand_Reconstruction" target="_blank" rel="noopener"><em>Forest_Stand_Reconstruction</em></a>.</p>
             <a class="btn btn-ghost" href="https://github.com/kriggithub/standrecon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View repo</a>
+            <a class="btn btn-ghost" href="https://CRAN.R-project.org/package=standrecon" target="_blank" rel="noopener">CRAN page</a>
           </div>
-          <pre class="code"><span class="c"># install from GitHub</span>
-<span class="f">remotes</span>::<span class="f">install_github</span>(<span class="s">"kriggithub/standrecon"</span>)
+          <pre class="code"><span class="c"># install from CRAN</span>
+<span class="f">install.packages</span>(<span class="s">"standrecon"</span>)
 
 <span class="k">library</span>(standrecon)
 <span class="c"># reconstruct past stand conditions</span></pre>
@@ -68,7 +69,7 @@
 
         <div class="feature reveal">
           <div>
-            <div class="tags" style="margin-bottom:12px"><span class="tag">R package</span><span class="tag pink">Data viz</span></div>
+            <div class="tags" style="margin-bottom:12px"><span class="tag">R package</span><span class="tag pink">Data viz</span><span class="tag alt">In development</span></div>
             <h3>corradar</h3>
             <p>Create correlation-based radar plots — a compact, visual way to compare how variables relate across groups.</p>
             <a class="btn btn-ghost" href="https://github.com/kriggithub/corradar" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View repo</a>
@@ -84,28 +85,49 @@
       <section>
         <p class="eyebrow reveal">// Research</p>
         <h2 class="reveal">Research projects</h2>
-        <p class="lead reveal" style="margin-bottom:32px">Applied statistical work across deep-sea, tropical forest and avian systems.</p>
+        <p class="lead reveal" style="margin-bottom:32px">Applied statistical work across deep-sea, tropical forest, avian and freshwater systems.</p>
         <div class="grid">
         <article class="card reveal">
           <div class="card-icon">01</div>
           <h3>Acropoma Diet Partitioning</h3>
-          <p>Diet partitioning between two deep-sea glowbellies off Taiwan, using GLMMs, PERMANOVA and niche analysis.</p>
-          <div class="tags"><span class="tag">GLMM</span><span class="tag">PERMANOVA</span><span class="tag alt">Marine</span></div>
+          <p>Diet partitioning between two deep-sea glowbellies off southwestern Taiwan, using GLMMs, PERMANOVA and niche analysis. Published in <em>Environmental Biology of Fishes</em> (2026).</p>
+          <div class="tags"><span class="tag">GLMM</span><span class="tag">PERMANOVA</span><span class="tag alt">Marine</span><span class="tag pink">Published</span></div>
           <a class="card-link" href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
         </article>
         <article class="card reveal">
           <div class="card-icon">02</div>
-          <h3>Behavioral Forest Edge</h3>
-          <p>How animal behaviour responds to forest edges and habitat boundaries.</p>
-          <div class="tags"><span class="tag">Behaviour</span><span class="tag alt">Tropical</span></div>
-          <a class="card-link" href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
+          <h3>La Selva Edge Effects</h3>
+          <p>How forest edges and rivers change howler monkey activity, group cohesion and roaring at La Selva, Costa Rica, with GLMs, GLMMs and depth-of-edge-influence models.</p>
+          <div class="tags"><span class="tag">GLMM</span><span class="tag">Model selection</span><span class="tag alt">Tropical</span></div>
+          <a class="card-link" href="https://github.com/kriggithub/La_Selva_Edge_Effects" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
         </article>
         <article class="card reveal">
           <div class="card-icon">03</div>
+          <h3>Behavioral Forest Edge</h3>
+          <p>A mathematical approach to how far behavioural edge effects reach into the forest for mantled howler monkeys, comparing nonlinear models with bootstrapped confidence intervals.</p>
+          <div class="tags"><span class="tag">Nonlinear models</span><span class="tag">Bootstrap</span><span class="tag alt">Tropical</span></div>
+          <a class="card-link" href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">04</div>
           <h3>Emberizoid Hindlimbs</h3>
-          <p>Comparative analysis of hindlimb morphology in emberizoid songbirds.</p>
-          <div class="tags"><span class="tag">Morphometrics</span><span class="tag pink">Birds</span></div>
+          <p>Ecomorphology and phylogenetic signal of hindlimbs in North American sparrows and blackbirds: PCA, PGLS, phylogenetic MANOVA and ancestral-state mapping.</p>
+          <div class="tags"><span class="tag">Phylogenetics</span><span class="tag">Morphometrics</span><span class="tag pink">Birds</span></div>
           <a class="card-link" href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">05</div>
+          <h3>Catostomidae JSDM</h3>
+          <p>Bayesian joint species distribution models (Hmsc) for North American suckers at reference stream sites, with species traits and phylogeny.</p>
+          <div class="tags"><span class="tag">Bayesian JSDM</span><span class="tag">Hmsc</span><span class="tag alt">Freshwater</span></div>
+          <a class="card-link" href="https://github.com/kriggithub/Catostomidae_JDSM_Exploration" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">06</div>
+          <h3>NRSA Assemblage Modelling</h3>
+          <p>Modelling stream fish assemblages in the Eastern Highlands from EPA National Rivers and Streams Assessment data.</p>
+          <div class="tags"><span class="tag">Species distribution</span><span class="tag alt">Freshwater</span><span class="tag pink">In progress</span></div>
+          <a class="card-link" href="https://github.com/kriggithub/NRSA_assemblage_modelling" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> View on GitHub →</a>
         </article>
         </div>
       </section>
@@ -114,24 +136,29 @@
         <p class="eyebrow reveal">// Toolkit</p>
         <h2 class="reveal" style="margin-bottom:24px">Methods &amp; tools</h2>
         <div class="skills reveal">
-          <span class="skill">R</span><span class="skill">tidyverse</span><span class="skill">ggplot2</span><span class="skill">R package development</span>
-          <span class="skill">GLMMs</span><span class="skill">PERMANOVA</span><span class="skill">Joint species distribution models</span><span class="skill">Niche analysis</span>
-          <span class="skill">Multivariate statistics</span><span class="skill">Bayesian modelling</span><span class="skill">Python</span><span class="skill">Git &amp; GitHub</span>
+          <span class="skill">R</span><span class="skill">tidyverse</span><span class="skill">ggplot2</span><span class="skill">R package development</span><span class="skill">testthat</span>
+          <span class="skill">GLMMs</span><span class="skill">PERMANOVA</span><span class="skill">Joint species distribution models</span><span class="skill">Phylogenetic comparative methods</span><span class="skill">Nonlinear model selection</span>
+          <span class="skill">Multivariate statistics</span><span class="skill">Bayesian modelling</span><span class="skill">Git &amp; GitHub</span><span class="skill">Claude Code</span>
         </div>
       </section>
 
       <section>
+        <p class="eyebrow reveal">// Education</p>
+        <h2 class="reveal" style="margin-bottom:24px">Education</h2>
+        <div class="reveal" style="margin-bottom:56px">
+          <div class="pub"><span class="year">M.S.</span><div><h4>Biostatistics, University of Washington</h4><p>Capstone track · 2026 – 2028 (expected) · Seattle, WA</p></div></div>
+          <div class="pub"><span class="year">B.S.</span><div><h4>Biology, minor in Mathematics</h4><p>Undergraduate research in ecology and ichthyology, published in two peer-reviewed journals.</p></div></div>
+        </div>
         <p class="eyebrow reveal">// Publications &amp; talks</p>
         <h2 class="reveal" style="margin-bottom:24px">Publications</h2>
-        <!-- TODO: replace these placeholders with real publications -->
         <div class="reveal">
-          <div class="pub"><span class="year">20XX</span><div><h4>Paper title goes here</h4><p>Author, A., <b>Riggin, K.</b>, & Author, C. — <em>Journal Name</em>. DOI link</p></div></div>
-          <div class="pub"><span class="year">20XX</span><div><h4>Conference talk or poster title</h4><p><b>Riggin, K.</b> — Conference Name, City.</p></div></div>
-          <div class="pub"><span class="year">20XX</span><div><h4>Thesis title</h4><p>Degree, University.</p></div></div>
+          <div class="pub"><span class="year">2026</span><div><h4><a href="https://doi.org/10.1643/i2025070" target="_blank" rel="noopener">Anatomy and evolution of bioluminescent organs in the gulper eels (Anguilliformes: Saccopharyngoidea)</a></h4><p>Ghedotti, M. J., Gonzalez, F. M., <b>Riggin, K. L.</b>, Agudo, K. C., Davis, M. P., Smith, W. L., &amp; Frable, B. W. — <em>Ichthyology &amp; Herpetology</em>, 114(3), 461–473.</p></div></div>
+          <div class="pub"><span class="year">2026</span><div><h4><a href="https://doi.org/10.1007/s10641-026-01814-y" target="_blank" rel="noopener">Evidence of deep-sea trophic resource partitioning between the glowbellies <em>Acropoma hanedai</em> and <em>A. japonicum</em> near southwestern Taiwan</a></h4><p>Ghedotti, M. J., <b>Riggin, K. L.</b>, Marsh, M. A., Bramlett, S. A., Pearson, H. D., Rodriguez, G. J., Gruber, J. N., Egan, J. P., &amp; Voss, K. A. — <em>Environmental Biology of Fishes</em>, 109, 43.</p></div></div>
+          <div class="pub"><span class="year">2026</span><div><h4><a href="https://doi.org/10.32614/CRAN.package.standrecon" target="_blank" rel="noopener">standrecon: Reconstruct historical forest stand conditions</a></h4><p><b>Riggin, K.</b> — R package, CRAN.</p></div></div>
+          <div class="pub"><span class="year">Talks</span><div><h4>Conference presentations</h4><p>Research presented at the AOS and CFO conferences, and at CoSIBS (CU Anschutz, 2023).</p></div></div>
         </div>
-        <p class="placeholder-note" style="margin-top:16px">Placeholder entries — update in academic.html.</p>
         <div class="hero-cta" style="justify-content:flex-start;margin-top:32px">
-          <a class="btn btn-primary" href="#">Download CV</a>
+          <a class="btn btn-primary" data-link="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn btn-ghost" data-link="github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> All repos on GitHub</a>
         </div>
       </section>
@@ -140,7 +167,7 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© <span data-year></span> Kurt Riggin. Built with plain HTML, CSS &amp; JS.</span>
+      <span>© <span data-year></span> Kurt Riggin. Built in a 30-minute speedrun with Claude Code · <a href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener" style="text-decoration:underline">copy it</a></span>
       <div class="socials" data-socials></div>
     </div>
   </footer>
