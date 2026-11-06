@@ -21,7 +21,7 @@
   const C = {};
   const readColors = () => {
     const cs = getComputedStyle(document.documentElement);
-    for (const k of ["panel", "grid", "ink", "ink-2", "teal", "salmon"]) C[k] = cs.getPropertyValue("--" + k).trim();
+    for (const k of ["panel", "grid", "ink", "ink-2", "bars", "curve"]) C[k] = cs.getPropertyValue("--" + k).trim();
   };
   readColors();
   addEventListener("themechange", () => { readColors(); if (reduce) draw(); });
@@ -92,7 +92,7 @@
     ctx.stroke();
 
     // bars
-    ctx.fillStyle = C.teal;
+    ctx.fillStyle = C.bars;
     bins.forEach((c, i) => {
       if (!c) return;
       const x0 = px(LO + i * BW), x1 = px(LO + (i + 1) * BW);
@@ -101,7 +101,7 @@
 
     // falling samples
     if (falling.length) {
-      ctx.fillStyle = C.teal;
+      ctx.fillStyle = C.bars;
       falling = falling.filter((d) => {
         d.y += d.v; d.v += 0.3;
         const stop = py(bins[d.b]) - T;
@@ -116,7 +116,7 @@
     if (landed > 30) {
       ctx.save();
       ctx.beginPath(); ctx.rect(L, T, pw, ph); ctx.clip();
-      ctx.strokeStyle = C.salmon; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
+      ctx.strokeStyle = C.curve; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
       ctx.beginPath();
       for (let z = LO; z <= HI + 1e-9; z += 0.05) {
         const y = py(landed * BW * Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI));

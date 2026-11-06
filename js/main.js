@@ -10,7 +10,7 @@ const Theme = (() => {
   const current = () => root.dataset.theme || (sys.matches ? "dark" : "light");
   const sync = () => {
     const t = current();
-    if (meta) meta.content = t === "dark" ? "#111515" : "#fafbfb";
+    if (meta) meta.content = t === "dark" ? "#0a0a0a" : "#fafafa";
     if (btn) {
       btn.textContent = t === "dark" ? "Light" : "Dark";
       btn.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
