@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kurt Riggin</title>
-  <meta name="description" content="Kurt Riggin: Biostatistics MS student at the University of Washington. Statistical models and R packages for biological data.">
+  <meta name="description" content="Kurt Riggin: biostatistician, YouTuber and AI builder.">
   <meta property="og:title" content="Kurt Riggin">
-  <meta property="og:description" content="Biostatistics MS student at the University of Washington. Research, R packages and publications.">
+  <meta property="og:description" content="Biostatistics MS student at the University of Washington. Research, R packages, AI builds and videos.">
   <meta name="theme-color" content="#fafafa">
   <script>/* apply a saved theme choice before first paint; otherwise CSS follows the system setting */var t;try{t=localStorage.getItem("theme")}catch(e){}if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
       <nav class="nav" aria-label="Main">
         <a href="index.html">Home</a>
         <a href="academic.html">Research</a>
-        <a href="youtube.html" hidden>YouTube</a><!-- ACADEMIC-ONLY: remove hidden to restore -->
+        <a href="youtube.html">YouTube</a>
       </nav>
       <button class="theme-btn" id="theme-toggle" type="button">Dark</button>
     </div>
@@ -33,21 +33,29 @@
       <section class="hero">
         <div class="hero-text">
           <p class="kicker">Biostatistics MS, University of Washington · Seattle</p>
-          <!-- ACADEMIC-ONLY. Full version: I model biological data in R, and build software with AI <em>on camera</em>. -->
-          <h1>I model biological data in <em>R</em>.</h1>
-          <!-- ACADEMIC-ONLY. Full version ends: "...for reconstructing historical forests, and a YouTube channel where I build real tools with Claude Code against the clock." -->
-          <p class="prose">Two peer-reviewed papers on deep-sea fishes, an R package on CRAN for reconstructing historical forests, and applied statistical work across tropical forests, birds and freshwater streams.</p>
+          <h1>I model biological data in R, and build software with AI <em>on camera</em>.</h1>
+          <p class="prose">Two peer-reviewed papers on deep-sea fishes, an R package on CRAN for reconstructing historical forests, and a YouTube channel where I build real tools with Claude Code against the clock.</p>
           <div class="actions">
             <a class="btn btn-ink" href="academic.html">See my research</a>
-            <a class="arrow-link" data-link="github" href="#" target="_blank" rel="noopener">Code on GitHub</a>
-            <!-- ACADEMIC-ONLY: <a class="arrow-link" href="youtube.html">Watch the builds</a> -->
+            <a class="arrow-link" href="youtube.html">Watch the builds</a>
           </div>
-          <div class="social-line" data-socials="github linkedin email"></div><!-- ACADEMIC-ONLY: set data-socials="" to show YouTube again -->
+          <div class="social-line" data-socials></div>
         </div>
         <figure class="portrait-fig">
           <img class="portrait" src="img/kurt.jpg" width="900" height="1125" alt="Portrait of Kurt Riggin, smiling, outdoors among trees">
           <figcaption><b>Figure 1.</b> The author, Seattle, 2026 (<i>n</i>&nbsp;=&nbsp;1).</figcaption>
         </figure>
+      </section>
+
+      <section class="block">
+        <h2 class="head">What I do</h2>
+        <div class="body">
+          <div class="trio">
+            <div><h3>Research</h3><p>Statistical models and open-source R tools for ecological questions, from deep-sea diets to forest edges.</p><a class="arrow-link" href="academic.html">Papers and packages</a></div>
+            <div><h3>YouTube</h3><p>I push AI tools as far as they go on camera: real builds against a real clock, no hand-typed code.</p><a class="arrow-link" href="youtube.html">Videos</a></div>
+            <div><h3>Client work</h3><p>Websites, tools and automations built with Claude Code, for small businesses, researchers and creators.</p><a class="arrow-link" href="#work">Work with me</a></div>
+          </div>
+        </div>
       </section>
 
       <section class="block">
@@ -72,20 +80,7 @@
         </div>
       </section>
 
-      <!-- ===== ACADEMIC-ONLY: everything below is hidden for the class presentation.
-           To bring it back, delete the `hidden` attribute on each section marked hidden. ===== -->
-      <section class="block" hidden>
-        <h2 class="head">What I do</h2>
-        <div class="body">
-          <div class="trio">
-            <div><h3>Research</h3><p>Statistical models and open-source R tools for ecological questions, from deep-sea diets to forest edges.</p><a class="arrow-link" href="academic.html">Papers and packages</a></div>
-            <div><h3>YouTube</h3><p>I push AI tools as far as they go on camera: real builds against a real clock, no hand-typed code.</p><a class="arrow-link" href="youtube.html">Videos</a></div>
-            <div><h3>Client work</h3><p>Websites, tools and automations built with Claude Code, for small businesses, researchers and creators.</p><a class="arrow-link" href="#work">Work with me</a></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="block" hidden>
+      <section class="block">
         <h2 class="head">Latest videos</h2>
         <div class="body">
           <div class="videos" id="latest-videos"></div>
@@ -93,7 +88,7 @@
         </div>
       </section>
 
-      <section class="block" hidden>
+      <section class="block">
         <h2 class="head">Builds</h2>
         <div class="body">
           <p class="prose muted">Things I've built with AI and use every day.</p>
@@ -111,7 +106,7 @@
         </div>
       </section>
 
-      <section class="block" id="work" hidden>
+      <section class="block" id="work">
         <h2 class="head">Work with me</h2>
         <div class="body">
           <h3 style="font-size:clamp(1.5rem,3vw,2rem)">Need something built?</h3>
@@ -133,9 +128,8 @@
 
   <footer>
     <div class="wrap">
-      <span>© <span data-year></span> Kurt Riggin · <span class="social-line" data-socials="github linkedin email"></span></span>
-      <!-- ACADEMIC-ONLY: set data-socials="" above and remove hidden below to restore -->
-      <span hidden>Built with Claude Code. The first version was a 30-minute speedrun on camera, and <a href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener">you can copy it</a>.</span>
+      <span>© <span data-year></span> Kurt Riggin · <span class="social-line" data-socials></span></span>
+      <span>Built with Claude Code. The first version was a 30-minute speedrun on camera, and <a href="https://github.com/kriggithub/YT_Portfolio_Website_Template" target="_blank" rel="noopener">you can copy it</a>.</span>
     </div>
   </footer>
 
