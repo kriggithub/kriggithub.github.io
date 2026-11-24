@@ -29,7 +29,7 @@ const Theme = (() => {
 })();
 
 /* ---------- Links ---------- */
-const LABELS = { github: "GitHub", linkedin: "LinkedIn", youtube: "YouTube", email: "Email" };
+const LABELS = { github: "GitHub", linkedin: "LinkedIn", cv: "CV", youtube: "YouTube", email: "Email" };
 /* data-socials="github linkedin email" shows only those links; empty shows all */
 document.querySelectorAll("[data-socials]").forEach((el) => {
   const only = el.dataset.socials.trim().split(/\s+/).filter(Boolean);
@@ -41,7 +41,7 @@ document.querySelectorAll("[data-socials]").forEach((el) => {
     })
     .join("");
 });
-document.querySelectorAll("[data-link]").forEach((el) => { el.href = SITE.links[el.dataset.link]; });
+document.querySelectorAll("[data-link]").forEach((el) => { el.href = SITE.links[el.dataset.link] ?? SITE[el.dataset.link]; });
 
 /* Email address shown as text, with a copy button */
 const address = SITE.links.email.replace("mailto:", "");

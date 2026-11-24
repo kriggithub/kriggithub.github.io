@@ -8,9 +8,13 @@ const SITE = {
   links: {
     github:   "https://github.com/kriggithub",
     linkedin: "https://www.linkedin.com/in/kurtriggin/",
+    cv:       "https://docs.google.com/document/d/1JoImuRGU1EMe6yR6i4B7Q0bNdFK50c1WSMNW6_DMcgg/preview",   // Google Doc, read-only view
     youtube:  "https://www.youtube.com/@KurtRiggin",
     email:    "mailto:krigginbusiness@gmail.com",
   },
+
+  // Same Google Doc, exported as a PDF download. Edits to the doc show up in both.
+  cvPdf: "https://docs.google.com/document/d/1JoImuRGU1EMe6yR6i4B7Q0bNdFK50c1WSMNW6_DMcgg/export?format=pdf",
 };
 
 /* YouTube videos.
