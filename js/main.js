@@ -30,8 +30,11 @@ const Theme = (() => {
 
 /* ---------- Links ---------- */
 const LABELS = { github: "GitHub", linkedin: "LinkedIn", youtube: "YouTube", email: "Email" };
+/* data-socials="github linkedin email" shows only those links; empty shows all */
 document.querySelectorAll("[data-socials]").forEach((el) => {
+  const only = el.dataset.socials.trim().split(/\s+/).filter(Boolean);
   el.innerHTML = Object.entries(SITE.links)
+    .filter(([k]) => !only.length || only.includes(k))
     .map(([k, url]) => {
       const ext = k === "email" ? "" : ' target="_blank" rel="noopener"';
       return `<a href="${url}"${ext}>${LABELS[k]}</a>`;
