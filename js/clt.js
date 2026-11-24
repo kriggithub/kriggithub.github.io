@@ -1,5 +1,5 @@
 /* =========================================================
-   Figure 1: the central limit theorem, drawn the way ggplot2's
+   Figure 2: the central limit theorem, drawn the way ggplot2's
    theme_grey draws a histogram (grey panel, white major and minor
    gridlines, ticks outside the panel). Colours come from the CSS
    tokens, so it follows the light/dark theme.

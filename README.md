@@ -7,7 +7,8 @@ Static site (plain HTML/CSS/JS, no build step) with three tabs: **Home**, **Acad
   - YouTube videos **sync automatically**: the `YouTube sync` GitHub Action (every 6 hours, or Actions → YouTube sync → Run workflow) writes `js/youtube-data.js` from the channel. Optional repo secret `YOUTUBE_API_KEY` adds views, durations, subscriber count and full history. To pin a featured video, set `VIDEOS.featured.id`.
 - **Research / publications:** `academic.html`
 - **Styling / colors:** `css/style.css`. Light palette at the top of the file, dark palette below it (twice: once for the system setting, once for the toggle; keep them in sync). The Dark/Light button in the nav saves the visitor's choice; with none saved, the site follows their system setting.
-- **Figure 1 (the live CLT histogram):** `js/clt.js`, drawn in ggplot2's `theme_grey` style from the CSS colour tokens.
+- **Figure 1 (hero portrait):** `img/kurt.jpg`, captioned in `index.html`.
+- **Figure 2 (the live CLT histogram):** `js/clt.js`, drawn in ggplot2's `theme_grey` style from the CSS colour tokens.
 
 ## Preview locally
 ```bash
